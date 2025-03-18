@@ -6,7 +6,7 @@
 /*   By: mboumlik <mboumlik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 11:31:41 by mboumlik          #+#    #+#             */
-/*   Updated: 2025/01/17 13:57:45 by mboumlik         ###   ########.fr       */
+/*   Updated: 2025/03/18 13:53:16 by mboumlik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void	perform_dda(t_cube *data)
 	}
 }
 
-// Main DDA function that uses all helper functions
 double	draw_line_dda(t_cube *data, double x1, double y1, double angle)
 {
 	init_ray_values(data, x1, y1, angle);
@@ -95,7 +94,7 @@ void	draw_3d(t_cube *data, double fov, double half_fov, double center_angle)
 		data->perp_dist *= cos(data->angle_diff * M_PI / 180.0);
 		if (data->perp_dist < 0.1)
 			data->perp_dist = 0.1;
-		data->var.line_height = (int)(SCREEN_HEIGHT / data->perp_dist * 64.0);
+		data->var.line_height = (SCREEN_HEIGHT / data->perp_dist * 64.0);
 		draw_vertical_line(data, data->x);
 		data->x++;
 	}

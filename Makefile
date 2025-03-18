@@ -7,7 +7,8 @@ source =   cube.c  utils/get_next_line.c utils/ft_strjoin.c\
 			tools_parse.c parse1.c parse2.c render.c initiale.c  trancp.c\
 			make_3d.c make_3d1.c make_3d2.c edit_final_map.c\
 			collectore_image.c hook.c drawing.c\
-			movment_player.c turn.c draw_sky_walls_flower.c
+			movment_player.c turn.c draw_sky_walls_flower.c\
+			movement_player1.c movement_player2.c \
 
 obj = $(source:.c=.o)
 

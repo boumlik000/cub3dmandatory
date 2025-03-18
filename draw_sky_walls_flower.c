@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_sky_walls_flower.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rlamtaou <rlamtaou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mboumlik <mboumlik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 21:02:51 by rlamtaou          #+#    #+#             */
-/*   Updated: 2025/01/16 21:31:15 by rlamtaou         ###   ########.fr       */
+/*   Updated: 2025/03/18 13:52:10 by mboumlik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,12 @@ void	draw_flower(t_cube *data, double wall_bottom, int x)
 {
 	int		y;
 	double	distance;
-	double	darkness;
 
 	y = wall_bottom + 1;
 	while (y < SCREEN_HEIGHT)
 	{
 		distance = (SCREEN_HEIGHT / (2.0 * y - SCREEN_HEIGHT)) * 64.0;
-		darkness = calculate_darkness(distance);
-		put_image_whit_dark(data, darkness, x, y);
+		put_image_whit_dark(data, x, y);
 		y++;
 	}
 }
@@ -68,7 +66,7 @@ void	draw_sky(t_cube *data, double wall_top, int x)
 	while (y < wall_top)
 	{
 		my_mlx_pixel_put2(&data->render_img, x, y,
-			(data->var.f[0] << 16) | (data->var.f[1] << 8) | data->var.f[2]);
+			(data->var.c[0] << 16) | (data->var.c[1] << 8) | data->var.c[2]);
 		y++;
 	}
 }
@@ -89,12 +87,9 @@ void	draw_walls(t_cube *data, double wall_top, double wall_bottom, int x)
 		data->var.tex_y = (int)tex_pos & (texture.h - 1);
 		data->var.color = get_pixel_img(texture, data->var.tex_x,
 				data->var.tex_y);
-		data->var.darkness = calculate_darkness(data->perp_wall_dist * 64.0);
-		data->var.r = ((data->var.color >> 16) & 0xFF) * (1.0
-				- data->var.darkness);
-		data->var.g = ((data->var.color >> 8) & 0xFF) * (1.0
-				- data->var.darkness);
-		data->var.b = (data->var.color & 0xFF) * (1.0 - data->var.darkness);
+		data->var.r = ((data->var.color >> 16) & 0xFF);
+		data->var.g = ((data->var.color >> 8) & 0xFF);
+		data->var.b = (data->var.color & 0xFF);
 		data->var.color = data->var.r << 16 | data->var.g << 8 | data->var.b;
 		my_mlx_pixel_put2(&data->render_img, x, data->var.in1, data->var.color);
 		tex_pos += step;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools_parse.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rlamtaou <rlamtaou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mboumlik <mboumlik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 15:43:18 by rlamtaou          #+#    #+#             */
-/*   Updated: 2025/01/16 21:26:21 by rlamtaou         ###   ########.fr       */
+/*   Updated: 2025/03/18 13:01:38 by mboumlik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,7 @@ void	ft_exit_1(t_cube *data, int err)
 int	ft_exit(t_cube *data)
 {
 	ft_lstclear_collec_img(&data->list_img_head, data);
-	if (data->list_img_head == NULL)
-	{
-		dprintf(2, "image free it \n");
-	}
 	ft_lstclear_collec(&data->list_collecte_head);
-	if (data->list_collecte_head == NULL)
-	{
-		dprintf(2, "obj free it \n");
-	}
 	mlx_clear_window(data->mlx_init, data->mlx_win);
 	mlx_destroy_window(data->mlx_init, data->mlx_win);
 	mlx_destroy_display(data->mlx_init);

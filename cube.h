@@ -6,7 +6,7 @@
 /*   By: mboumlik <mboumlik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 13:10:40 by rlamtaou          #+#    #+#             */
-/*   Updated: 2025/01/17 13:58:06 by mboumlik         ###   ########.fr       */
+/*   Updated: 2025/03/18 13:51:30 by mboumlik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ typedef struct variable
 	int					tex_y;
 	int					color;
 	double				darkness;
-	int					line_height;
+	double				line_height;
 	int					r;
 	int					g;
 	int					b;
@@ -286,8 +286,7 @@ void					draw_walls(t_cube *data, double wall_top,
 void					draw_flower(t_cube *data, double wall_bottom, int x);
 void					draw_sky(t_cube *data, double wall_top, int x);
 int						calculate_x(t_cube *data, t_img texture);
-void					put_image_whit_dark(t_cube *data, double darkness,
-							int x, int y);
+void					put_image_whit_dark(t_cube *data, int x, int y);
 void					my_mlx_pixel_put2(t_img_data *img, int x, int y,
 							int color);
 void					calculate_step_dist_y(t_cube *data, double y1);
@@ -296,8 +295,15 @@ void					init_ray_values(t_cube *data, double x1, double y1,
 							double angle);
 int						get_map_height(char **map);
 void					calculate_perp_dist(t_cube *data, double x1, double y1);
-void					put_image_whit_dark(t_cube *data, double darkness,
-							int x, int y);
 void					draw_vertical_line(t_cube *data, int x);
+int						check_wall(t_cube *data, int x, int y);
+void					move_player_up(t_cube *data);
+void					update_player_position(t_cube *data, double old_x,
+							double old_y);
+void					move_player_down(t_cube *data);
+int						check_move_condition(t_cube *data, double new_x,
+							double new_y, double old_x);
+void					move_player_left_x(t_cube *data, double new_x,
+							double new_y, double old_x);
 
 #endif

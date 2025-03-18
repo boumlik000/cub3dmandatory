@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rlamtaou <rlamtaou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mboumlik <mboumlik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 15:43:44 by rlamtaou          #+#    #+#             */
-/*   Updated: 2025/01/16 18:30:05 by rlamtaou         ###   ########.fr       */
+/*   Updated: 2025/03/18 13:54:16 by mboumlik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,6 @@ void	first_frame(t_cube *data)
 		data->imgs_player.addr = mlx_get_data_addr(data->imgs_player.img,
 				&data->imgs_player.bits_per_pixel,
 				&data->imgs_player.line_length, &data->imgs_player.endian);
-		draw_block(&data->imgs_blue, 0x00FF00);
-		draw_player(&data->imgs_player, 0x00FF00);
-		draw_block(&data->imgs_red, 0x00FF00);
 		draw_map(data);
 		data->var.x_old_mouse = data->p_info.px;
 		ft_collectore(&data->list_img_head, data->imgs_red.img, "mouse_click");
